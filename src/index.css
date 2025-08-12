@@ -1,0 +1,225 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Love Story Design System - Romantic Color Palette
+All colors MUST be HSL. Based on romantic warm tones.
+*/
+
+@layer base {
+  :root {
+    /* Love Story Color Palette */
+    --background: 345 15% 94%;  /* Soft warm white */
+    --foreground: 355 48% 25%;  /* Dark maroon text */
+
+    --card: 345 20% 96%;
+    --card-foreground: 355 48% 25%;
+
+    --popover: 345 20% 96%;
+    --popover-foreground: 355 48% 25%;
+
+    /* Primary: Deep Rose/Dusty Pink */
+    --primary: 340 37% 48%;      /* #A3526E */
+    --primary-foreground: 345 15% 94%;
+
+    /* Secondary: Soft Rose/Light Pink */
+    --secondary: 345 28% 73%;    /* #D298A3 */
+    --secondary-foreground: 355 48% 25%;
+
+    /* Muted: Pale Lavender/Greige */
+    --muted: 340 8% 82%;         /* #D1C7CA */
+    --muted-foreground: 340 20% 45%;
+
+    /* Accent: Warm Gold/Mustard */
+    --accent: 45 68% 66%;        /* #E5BB6B */
+    --accent-foreground: 355 48% 25%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 345 15% 94%;
+
+    --border: 340 15% 88%;
+    --input: 340 15% 88%;
+    --ring: 340 37% 48%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark Mode: Deeper romantic tones */
+    --background: 355 48% 15%;    /* Dark maroon background */
+    --foreground: 345 15% 94%;   /* Light warm text */
+
+    --card: 355 40% 18%;
+    --card-foreground: 345 15% 94%;
+
+    --popover: 355 40% 18%;
+    --popover-foreground: 345 15% 94%;
+
+    /* Primary: Lighter rose in dark mode */
+    --primary: 345 28% 73%;      /* #D298A3 */
+    --primary-foreground: 355 48% 15%;
+
+    /* Secondary: Deeper rose */
+    --secondary: 340 37% 35%;    /* Darker version of #A3526E */
+    --secondary-foreground: 345 15% 94%;
+
+    /* Muted: Darker neutral */
+    --muted: 355 30% 25%;
+    --muted-foreground: 340 8% 70%;
+
+    /* Accent: Warmer gold in dark */
+    --accent: 45 68% 60%;        /* Slightly darker gold */
+    --accent-foreground: 355 48% 15%;
+
+    --destructive: 0 62.8% 45%;
+    --destructive-foreground: 345 15% 94%;
+
+    --border: 355 25% 25%;
+    --input: 355 25% 25%;
+    --ring: 345 28% 73%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    scroll-behavior: smooth;
+  }
+}
+
+/* Love Story Custom Design Tokens */
+@layer base {
+  :root {
+    /* Romantic gradients */
+    --gradient-romantic: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--primary)));
+    --gradient-hero: linear-gradient(120deg, hsl(var(--background)), hsl(var(--secondary)));
+    --gradient-accent: linear-gradient(45deg, hsl(var(--accent)), hsl(var(--primary)));
+    
+    /* Shadows with romantic glow */
+    --shadow-romantic: 0 10px 30px -10px hsl(var(--primary) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--accent) / 0.2);
+    --shadow-card: 0 4px 20px hsl(var(--primary) / 0.1);
+    
+    /* Animations & transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+}
+
+/* Typography */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* Custom animations for love story */
+@layer components {
+  .heart-fill {
+    animation: fillHeart 3s ease-in-out forwards;
+  }
+  
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  .ripple-effect {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .ripple-effect::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: hsl(var(--primary) / 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+  
+  .ripple-effect:active::after {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .story-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: var(--transition-smooth);
+  }
+  
+  .story-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .memory-card {
+    transition: var(--transition-bounce);
+  }
+  
+  .memory-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-romantic);
+  }
+}
+
+@keyframes fillHeart {
+  0% {
+    clip-path: inset(100% 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.pulse-heart {
+  animation: pulse 2s infinite ease-in-out;
+}
